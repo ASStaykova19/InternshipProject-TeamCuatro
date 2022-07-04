@@ -1,4 +1,4 @@
-*Contributors*
+***Contributors***
 
 Aleksandra Staykova - Deployment
 
@@ -10,7 +10,7 @@ Hristo Kovachev - Crawler
 
 Karina Tangardzhieva - AI, ML
 
-*Resume of the Project*
+***Resume of the Project***
 
 We are team Cuatro. The task is to create a crawling application.
 
