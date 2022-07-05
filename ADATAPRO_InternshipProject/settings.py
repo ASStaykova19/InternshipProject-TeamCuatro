@@ -28,7 +28,9 @@ SECRET_KEY = os.getenv("DJANGO_SECRET")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["teamcuatro.azurewebsites.net", "localhost", "127.0.0.1"]
+
+CSRF_TRUSTED_ORIGINS = ["https://teamcuatro.azurewebsites.net/", "https://127.0.0.1/"]
 
 
 # Application definition
