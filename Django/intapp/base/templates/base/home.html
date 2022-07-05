@@ -1,0 +1,60 @@
+{% extends 'main.html' %}
+
+{% block content %}
+
+<style>
+    a:link { 
+        text-decoration: none;
+    }
+
+    small {
+        color: rgb(50, 50, 50);
+        font-weight: bold;
+        letter-spacing: 0.25ch;
+    }
+
+    .title {
+        font-size: 1.25em;
+    }
+
+    .home {
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    }
+
+    .edit {
+        color: rgb(34, 92, 105);
+    }
+
+    .delete {
+        color: red;
+    }
+</style>
+
+<div class="home">
+
+    <div>
+        <h2>Search</h2>
+    </div>
+
+    <div>
+        <a href="{% url 'create-room' %}">Create room</a>
+
+        <hr>
+
+        <div>
+            {% for room in rooms %}
+            <div>
+                <a class="edit" href="{% url 'update-room' room.id %}">Edit</a>
+                <a class="delete" href="{% url 'delete-room' room.id %}">Delete</a>
+                <span>@{{room.host.username}}</span>
+                <h5 class="title">{{room.id}} -- <a href="{% url 'room' room.id %}">{{room.name}}</a></h5>
+                <small>{{room.topic.name}}</small>
+                <hr>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
