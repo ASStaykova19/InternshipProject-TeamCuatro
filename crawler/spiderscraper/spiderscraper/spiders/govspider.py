@@ -4,18 +4,19 @@ import scrapy
 
 class GovSpider(scrapy.Spider):
     name = 'gov'
-    start_urls = ['https://www.whiskyshop.com/scotch-whisky?item_availability=In+Stock']
+    start_urls = ['https://gov.bg/bg/prestsentar/novini/']
 
     def parse(self,response):
-        for products in response.css('div.product-item-info'):
+        for products in response.css('div.item.no-padding'):
             yield {
-                'name': products.css('a.product-item-link::text').get() ,
-                'price': products.css('span.price::text').get() ,
-                'link': products.css('a.product-item-link').attrib['href'] ,
+                'title':products.css("div.col-lg-7 a::text").get(),
+                'link': products.css("div.col-lg-7 a::attr(href)").get(),
             } 
 
 
 
-        next_page = response.css('a.action.next').attrib['href']
+        next_page = response.css('a.frontend.paginator.next').attrib['href']
         if next_page is not None:
             yield response.follow(next_page, callback=self.parse)
+
+         
